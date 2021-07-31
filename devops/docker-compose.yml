@@ -23,9 +23,26 @@ services:
     networks:
       - getir-backend
 
+  getir-readingisgood:
+    image: onursabit03/readingisgood:latest
+    container_name: getir_readingisgood
+    restart: on-failure
+    ports:
+      - 8090:8090
+    environment:
+      - DB_URL=getir_database
+      - DB_PORT=5432
+      - REDIS_URL=getir_redis
+      - REDIS_PORT=6379
+    networks:
+      - getir-backend
+    depends_on:
+      - getir-database
+      - getir-redis
+
 volumes:
   getir-database:
 
 networks:
   getir-backend:
-      name: getir-backend-network
+    name: getir-backend-network
