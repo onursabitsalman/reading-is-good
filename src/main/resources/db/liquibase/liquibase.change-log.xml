@@ -1,0 +1,33 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="getir-liquibase" id="table-creating">
+        <sqlFile dbms="postgresql"
+                 encoding="utf8"
+                 path="V1_CREATE_TABLE.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+
+    <changeSet author="getir-liquibase" id="insert-admin">
+        <sqlFile dbms="postgresql"
+                 encoding="utf8"
+                 path="V2_INSERT_ADMIN.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+
+    <changeSet author="getir-liquibase" id="table-creating-v2">
+        <sqlFile dbms="postgresql"
+                 encoding="utf8"
+                 path="V3_CREATE_TABLE.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+</databaseChangeLog>
