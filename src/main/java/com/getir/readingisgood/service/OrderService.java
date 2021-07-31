@@ -64,7 +64,7 @@ public class OrderService {
                             throw new ResourceNotFoundException(ErrorMessages.BOOK_NOT_FOUND);
                         }
                 );
-
+        log.info("Order created by: {} and purchased book id: {}", currentCustomerId, orderRequest.getBookId());
         return new GenericReturnValue<>(orderRepository.save(order).getId());
     }
 
@@ -95,18 +95,21 @@ public class OrderService {
                             (book) -> {
                                 book.setStock(book.getStock() + orderResponse.getQuantity());
                                 bookRepository.updateBook(book);
+                                log.info("Updated book id: {}, new stock: {}", book.getId(), book.getStock());
                             },
                             () -> {
                                 throw new ResourceNotFoundException(ErrorMessages.BOOK_NOT_FOUND);
                             }
                     );
                     orderRepository.updateOrderStatus(order.getId(), OrderStatusType.CANCELLED);
+                    log.info("Updated order id: {}, new status: {}", order.getId(), OrderStatusType.CANCELLED);
                 },
                 () -> {
                     throw new ResourceNotFoundException(ErrorMessages.ORDER_NOT_FOUND);
                 }
         );
 
+        log.info("Order cancelled by: {} and order id: {}", currentCustomerId, orderId);
         return new GenericReturnValue<>(ResponseMessages.CANCELLED_ORDER);
     }
 }

@@ -42,6 +42,7 @@ public class CustomerService {
 
         customerRequest.setPassword(passwordEncoder.encode(customerRequest.getPassword()));
         User customer = userMapper.toEntity(customerRequest);
+        log.info("Created customer with username: {}", customerRequest.getUsername());
         return new GenericReturnValue<>(userRepository.save(customer).getId());
     }
 

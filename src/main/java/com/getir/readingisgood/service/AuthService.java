@@ -17,6 +17,7 @@ public class AuthService {
     public GenericReturnValue<Boolean> logout() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         userTokenService.deleteToken(authentication.getName());
+        log.info("Logout username: {}", authentication.getName());
         return new GenericReturnValue<>(true);
     }
 }

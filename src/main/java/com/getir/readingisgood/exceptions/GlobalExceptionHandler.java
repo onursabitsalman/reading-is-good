@@ -49,7 +49,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({CustomException.class, ConstraintViolationException.class})
     public ResponseEntity<ExceptionResponse> customException(Exception ex) {
-        ex.printStackTrace();
         log.error(ex.getMessage());
         ExceptionResponse response = new ExceptionResponse();
         response.setErrorCode(HttpStatus.BAD_REQUEST.value());

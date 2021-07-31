@@ -27,6 +27,7 @@ public class BookService {
     public GenericReturnValue<Long> saveBook(BookRequest bookRequest) {
         validateUtil.validate(bookRequest);
         Book book = bookMapper.toEntity(bookRequest);
+        log.info("Added book: {}", bookRequest.toString());
         return new GenericReturnValue<>(bookRepository.save(book).getId());
     }
 
@@ -37,6 +38,7 @@ public class BookService {
         if (!bookRepository.existsById(bookStockRequest.getId())) {
             throw new ResourceNotFoundException(ErrorMessages.BOOK_NOT_FOUND);
         }
+        log.info("Updated book id: {}, new stock: {}", bookStockRequest.getId(), bookStockRequest.getStock());
         return new GenericReturnValue<>(bookRepository.updateBookStock(bookStockRequest));
     }
 
