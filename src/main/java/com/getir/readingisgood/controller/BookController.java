@@ -24,7 +24,7 @@ public class BookController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping
-    public ResponseEntity<GenericReturnValue<Integer>> updateBookStock(@RequestBody BookStockRequest bookStockRequest) {
+    public ResponseEntity<GenericReturnValue<String>> updateBookStock(@RequestBody BookStockRequest bookStockRequest) {
         return ResponseEntity.ok(bookService.updateBookStock(bookStockRequest));
     }
 }

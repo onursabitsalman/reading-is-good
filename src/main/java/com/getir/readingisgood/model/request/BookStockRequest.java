@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Getter
@@ -18,6 +17,5 @@ public class BookStockRequest {
     private Long id;
 
     @NotNull(message = "Stock cannot be null!")
-    @Min(value = 0, message = "Stock is not valid!")
     private Long stock;
 }

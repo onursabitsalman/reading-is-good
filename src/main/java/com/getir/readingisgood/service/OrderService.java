@@ -56,9 +56,9 @@ public class OrderService {
                             if (!(book.getStock() >= orderRequest.getQuantity())) {
                                 throw new CustomException(ErrorMessages.BOOK_STOCK_ERROR);
                             }
-                            book.setStock(book.getStock() - orderRequest.getQuantity());
-                            bookRepository.updateBook(book);
-                            order.setBook(book);
+                            bookRepository.decreaseBookStock(book.getId(), orderRequest.getQuantity());
+                            order.setBook(bookRepository.findById(book.getId()).get());
+                            log.info("Updated book id: {}", book.getId());
                         },
                         () -> {
                             throw new ResourceNotFoundException(ErrorMessages.BOOK_NOT_FOUND);
@@ -93,9 +93,8 @@ public class OrderService {
                     Optional<Book> orderBook = bookRepository.findById(orderResponse.getBook().getId());
                     orderBook.ifPresentOrElse(
                             (book) -> {
-                                book.setStock(book.getStock() + orderResponse.getQuantity());
-                                bookRepository.updateBook(book);
-                                log.info("Updated book id: {}, new stock: {}", book.getId(), book.getStock());
+                                bookRepository.increaseBookStock(book.getId(), orderResponse.getQuantity());
+                                log.info("Updated book id: {}", book.getId());
                             },
                             () -> {
                                 throw new ResourceNotFoundException(ErrorMessages.BOOK_NOT_FOUND);
