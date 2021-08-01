@@ -15,7 +15,7 @@ services:
       - getir-locale-database:/var/lib/postgresql/data
     networks:
       - getir-locale-backend
-  getir-redis:
+  getir-locale-redis:
     image: redis:6.2.2
     container_name: getir_locale_redis
     ports:
