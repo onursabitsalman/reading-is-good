@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 public class BookRequest {
 
     @NotBlank(message = "Name cannot be null or blank!")

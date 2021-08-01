@@ -2,10 +2,7 @@ package com.getir.readingisgood.model.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.getir.readingisgood.entity.enums.OrderStatusType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,6 +13,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class OrderRequest {
 
     @NotNull(message = "Order status cannot be null!")

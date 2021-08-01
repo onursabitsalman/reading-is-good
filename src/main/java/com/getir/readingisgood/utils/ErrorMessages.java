@@ -5,6 +5,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class ErrorMessages {
     public static final String AUTHENTICATION_ERROR = "Authentication information is wrong";
+    public static final String AUTHENTICATION_NOT_FOUND = "Authentication not found";
     public static final String USER_NOT_FOUND = "Cannot find user";
     public static final String BOOK_NOT_FOUND = "Book not found";
     public static final String BOOK_STOCK_ERROR = "Book stock is not enough";
