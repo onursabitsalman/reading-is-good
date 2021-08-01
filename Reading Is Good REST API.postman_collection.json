@@ -1,0 +1,391 @@
+{
+	"info": {
+		"_postman_id": "f3312d3c-c12e-4f7d-b3c2-666bf620967c",
+		"name": "Reading Is Good REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpZCI6MSwiaWF0IjoxNjI3ODMxMTQzLCJleHAiOjE2Mjc4NDkxNDN9.IBwNr71iApuWm_BskN6n-Q_NwYP6dLl0C-p2eW8Swa9IwHwwOEvgAEWApXggfV-2Blukz9bZZ_blMDhI9r34Ww",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Book (CALL WITH ADMIN TOKEN)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpZCI6MSwiaWF0IjoxNjI3ODMxNDU2LCJleHAiOjE2Mjc4NDk0NTZ9.jLEe6e44qNPKkoYoEYcAZnuUmOULBi1XSfc-iSjjmct3rWlzMQw5UlQf_wSuqIqixItqHZFzzAUbZbfCho8rbQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"author\": \"Onur Sabit Salman\",\r\n    \"name\": \"Java\",\r\n    \"page\": 220,\r\n    \"price\": 19.99,\r\n    \"stock\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book Stock (CALL WITH ADMIN TOKEN)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpZCI6MSwiaWF0IjoxNjI3ODMxNDU2LCJleHAiOjE2Mjc4NDk0NTZ9.jLEe6e44qNPKkoYoEYcAZnuUmOULBi1XSfc-iSjjmct3rWlzMQw5UlQf_wSuqIqixItqHZFzzAUbZbfCho8rbQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 1,\r\n  \"stock\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register New Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"onursabitsalman@getir.com\",\r\n  \"name\": \"Onur Sabit\",\r\n  \"surname\": \"Salman\",\r\n  \"password\": \"test\",\r\n  \"username\": \"onursabitsalman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Customer Orders (CALL WITH CUSTOMER TOKEN)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvc3MiLCJhdXRob3JpdGllcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9DVVNUT01FUiJ9XSwiaWQiOjIsImlhdCI6MTYyNzgzMjA5MCwiZXhwIjoxNjI3ODUwMDkwfQ.DWqT1rnKPpZ2kzWopzYPs1Mv1zatxtG8qEhwlnfhwz6h3Nw3idvilVR24ZdJazPPzvm2KvbRQ32wmvR0jUBi6w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8090/api/customer/order?pageNo=0&pageSize=10&sortBy=id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"customer",
+						"order"
+					],
+					"query": [
+						{
+							"key": "pageNo",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						},
+						{
+							"key": "sortBy",
+							"value": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Orders (CALL WITH ADMIN TOKEN)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpZCI6MSwiaWF0IjoxNjI3ODMyMjE1LCJleHAiOjE2Mjc4NTAyMTV9.xmvyAnEqU1kN--VKN9S-j3Q5V1Hse2yRQ35xB4OGf66IVVu5qzVRJXXGPMqFuXWMbG8luqOhzGEH9Th_hUmbzQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8090/api/order?pageNo=0&pageSize=10&sortBy=id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"order"
+					],
+					"query": [
+						{
+							"key": "pageNo",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						},
+						{
+							"key": "sortBy",
+							"value": "id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Orders With Date Interval (CALL WITH ADMIN TOKEN)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJpZCI6MSwiaWF0IjoxNjI3ODMyMjE1LCJleHAiOjE2Mjc4NTAyMTV9.xmvyAnEqU1kN--VKN9S-j3Q5V1Hse2yRQ35xB4OGf66IVVu5qzVRJXXGPMqFuXWMbG8luqOhzGEH9Th_hUmbzQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8090/api/order/interval?startDate=2020-01-01&endDate=2022-01-01&pageNo=0&pageSize=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"order",
+						"interval"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2020-01-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2022-01-01"
+						},
+						{
+							"key": "pageNo",
+							"value": "0"
+						},
+						{
+							"key": "pageSize",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Order (CALL WITH CUSTOMER TOKEN)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"bookId\": 1,\r\n  \"quantity\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Order (CALL WITH CUSTOMER TOKEN)",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvc3MiLCJhdXRob3JpdGllcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9DVVNUT01FUiJ9XSwiaWQiOjIsImlhdCI6MTYyNzgzMjA5MCwiZXhwIjoxNjI3ODUwMDkwfQ.DWqT1rnKPpZ2kzWopzYPs1Mv1zatxtG8qEhwlnfhwz6h3Nw3idvilVR24ZdJazPPzvm2KvbRQ32wmvR0jUBi6w",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "1",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Monthly Statistics (CALL WITH CUSTOMER TOKEN)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvc3MiLCJhdXRob3JpdGllcyI6W3siYXV0aG9yaXR5IjoiUk9MRV9DVVNUT01FUiJ9XSwiaWQiOjIsImlhdCI6MTYyNzgzMjA5MCwiZXhwIjoxNjI3ODUwMDkwfQ.DWqT1rnKPpZ2kzWopzYPs1Mv1zatxtG8qEhwlnfhwz6h3Nw3idvilVR24ZdJazPPzvm2KvbRQ32wmvR0jUBi6w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8090/api/statistic/monthly",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"statistic",
+						"monthly"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
