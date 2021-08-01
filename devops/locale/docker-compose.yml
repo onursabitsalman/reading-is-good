@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  getir-locale-database:
+    image: postgres:11-alpine
+    container_name: getir_locale_database
+    restart: on-failure
+    environment:
+      - POSTGRES_DB=getir_pg
+      - POSTGRES_USER=getir-dev
+      - POSTGRES_PASSWORD=getir123
+    ports:
+      - 5438:5432
+    volumes:
+      - getir-locale-database:/var/lib/postgresql/data
+    networks:
+      - getir-locale-backend
+  getir-redis:
+    image: redis:6.2.2
+    container_name: getir_locale_redis
+    ports:
+      - 6379:6379
+    networks:
+      - getir-locale-backend
+
+volumes:
+  getir-locale-database:
+
+networks:
+  getir-locale-backend:
+    name: getir-locale-backend-network
