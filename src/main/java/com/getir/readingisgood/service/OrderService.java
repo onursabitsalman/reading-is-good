@@ -89,6 +89,9 @@ public class OrderService {
 
         customerOrder.ifPresentOrElse(
                 (order) -> {
+                    if (order.getStatus().equals(OrderStatusType.CANCELLED)) {
+                        throw new CustomException(ErrorMessages.ORDER_ALREADY_CANCELLED);
+                    }
                     OrderResponse orderResponse = orderMapper.toOrderResponse(order);
                     Optional<Book> orderBook = bookRepository.findById(orderResponse.getBook().getId());
                     orderBook.ifPresentOrElse(

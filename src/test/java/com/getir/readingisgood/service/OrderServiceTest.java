@@ -300,11 +300,26 @@ public class OrderServiceTest {
     }
 
     @Test
-    public void cancelOrder_withCouldNotFindBook_expectedResourceNotFoundException2() {
+    public void cancelOrder_withCouldNotFindOrder_expectedResourceNotFoundException() {
 
         when(userDetailsDaoService.getUserId()).thenReturn(1L);
         assertThrows(ResourceNotFoundException.class, () -> orderService.cancelOrder(1L));
 
+    }
+
+    @Test
+    public void cancelOrder_withAlreadyCancelled_expectedCustomException() {
+
+        Order order = Order.builder()
+                .id(1L)
+                .quantity(10L)
+                .status(OrderStatusType.CANCELLED)
+                .build();
+
+        when(userDetailsDaoService.getUserId()).thenReturn(1L);
+        when(orderRepository.findByIdAndCustomerId(anyLong(), anyLong())).thenReturn(Optional.of(order));
+
+        assertThrows(CustomException.class, () -> orderService.cancelOrder(1L));
     }
 
 }
